@@ -16,22 +16,14 @@ export class AppComponent implements OnInit {
     ) {}
 
     ngOnInit(): any {
-        if (this.isLoggedIn()) {
-            this._router.navigate(['/dashboard']);
-        } else {
-            this._router.navigate(['/login']);
-        }
+        // this._router.navigate(['/splash']);
     }
 
-    isLoggedIn(): boolean {
-        return !!this._dataStore.getToken();
-    }
-
-    logOutUser() {
+    /*logOutUser() {
         this._router.navigate(["/login"]).then(() => {
             if (this._allowLogout.getAllowLogout()) {
                 this._dataStore.clearEverything();
             }
         });
-    }
+    }*/
 }

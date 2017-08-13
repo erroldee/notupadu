@@ -13,13 +13,16 @@ export class LoadIfLoggedIn implements CanLoad {
     canLoad(
         route: Route
     ): Observable<boolean>|Promise<boolean>|boolean {
-        if (this._dataStore.getToken()) {
+        // TODO replace with update check finished
+        /*if (this._dataStore.getToken()) {
             return true;
         }
 
         // Navigate to the login page
         this._router.navigate(['/login']);
 
-        return false;
+        return false;*/
+
+        return true;
     }
 }

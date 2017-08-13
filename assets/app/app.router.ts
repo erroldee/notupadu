@@ -1,28 +1,25 @@
 import {RouterModule, Route, PreloadAllModules} from '@angular/router';
 import {ModuleWithProviders} from '@angular/core';
-import {LoadIfLoggedIn} from './shared/helpers/load-if-logged-in.helper';
+import {SplashScreenComponent} from "./components/splash-screen/splash-screen.component";
 
 const routes: Route[] = [
     {
-        path: '',
-        redirectTo: '/login',
-        pathMatch: 'full'
+        path: "",
+        redirectTo: "/splash",
+        pathMatch: "full"
     },
     {
-        loadChildren: 'app/components/sample-login/sample-login.module#SampleLoginModule',
-        path: 'login'
+        loadChildren: "app/components/main-app/main-app.module#MainAppModule",
+        path: "main"
     },
     {
-        loadChildren: 'app/components/sample-dashboard/sample-dashboard.module#SampleDashboardModule',
-        path: 'dashboard',
-        canLoad: [
-            LoadIfLoggedIn
-        ]
+        path: "splash",
+        component: SplashScreenComponent
     },
     {
-        path: '**',
-        redirectTo: '/login',
-        pathMatch: 'full'
+        path: "**",
+        redirectTo: "/main",
+        pathMatch: "full"
     }
 ];
 

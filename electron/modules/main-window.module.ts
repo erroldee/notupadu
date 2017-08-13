@@ -1,4 +1,4 @@
-import { app } from "electron";
+import {app} from "electron";
 import {WindowObject} from "../objects/window.object";
 import {MenuObject} from "../objects/menu.object";
 import MenuItemConstructorOptions = Electron.MenuItemConstructorOptions;
@@ -7,17 +7,17 @@ const url = require('url');
 const path = require('path');
 
 export class MainWindowModule {
-    private mainWindow: WindowObject;
-    private mainMenu: MenuObject;
+    private window: WindowObject;
+    private menuObj: MenuObject;
     private menu: MenuItemConstructorOptions[];
-    private mainHTML: string = CONSTANTS.mainDevHTML;
+    private HTMLcontent: string = CONSTANTS.mainDevHTML;
 
     constructor() {
         this.appEvents();
     }
 
     appEvents() {
-        this.mainWindow = new WindowObject({});
+        this.window = new WindowObject({});
         this.loadMain();
         this.loadEvents();
         this.buildMenu();
@@ -25,17 +25,17 @@ export class MainWindowModule {
 
     loadMain() {
         if (CONSTANTS.production) {
-            this.mainHTML = url.format({
+            this.HTMLcontent = url.format({
                 pathname: path.join(CONSTANTS.projectRoot, `/${CONSTANTS.mainProdHTML}`),
                 protocol: 'file:',
                 slashes: true
             });
         }
-        this.mainWindow.loadURL(this.mainHTML);
+        this.window.loadURL(this.HTMLcontent);
     }
 
     loadEvents() {
-        this.mainWindow.addListener("closed", () => {
+        this.window.addListener("closed", () => {
             CONSTANTS.windowList[CONSTANTS.windowMapping["main"]] = null;
         });
     }
@@ -80,15 +80,15 @@ export class MainWindowModule {
             this.menu.unshift({});
         }
 
-        this.mainMenu = new MenuObject(this.menu);
-        this.mainWindow.setMenu(this.mainMenu.obj);
+        this.menuObj = new MenuObject(this.menu);
+        this.window.setMenu(this.menuObj.obj);
     }
 
     sendContent(channel: string, data: any) {
-        this.mainWindow.obj.webContents.send(channel, data);
+        this.window.obj.webContents.send(channel, data);
     }
 
     closeWindow() {
-        this.mainWindow.obj.close();
+        this.window.obj.close();
     }
 }

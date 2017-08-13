@@ -1,9 +1,11 @@
 export const CONSTANTS = {
-    production: true,
+    production: false,
     app: null,
     windowList: [],
     windowMapping: {},
     projectRoot: "",
-    mainDevHTML: `http://localhost:8080/`,
-    mainProdHTML: `client/index.html`
+    splashDevHTML: `http://localhost:8080/`,
+    splashProdHTML: `client/index.html`,
+    mainDevHTML: `http://localhost:8080/#/main`,
+    mainProdHTML: `client/index.html/#/main`
 };

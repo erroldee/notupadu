@@ -14,7 +14,7 @@ export class CheckConfirm {
      */
     confirm(message?: string): Promise<boolean> {
         return new Promise<boolean>(resolve => {
-            return resolve(window.confirm(message || 'Is it OK?'));
+            return resolve(window.confirm(message || 'It seems you still have some unfinished work. Are you sure you wish to exit?'));
         });
     };
 }

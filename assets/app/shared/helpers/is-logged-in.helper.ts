@@ -14,16 +14,16 @@ export class IsLoggedIn implements CanActivate {
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
     ): Observable<boolean>|Promise<boolean>|boolean {
-        if (this._dataStore.getToken()) {
+        // TODO replace with update check finished
+        /*if (this._dataStore.getToken()) {
             return true;
         }
-
-        // Store the attempted URL for redirecting
-        this._dataStore.setRedirectURL(state.url);
 
         // Navigate to the login page
         this._router.navigate(['/login']);
         
-        return false;
+        return false;*/
+
+        return true;
     }
 }

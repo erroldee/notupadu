@@ -17,7 +17,7 @@ export class GetHelloWorldService {
         });
 
         return this._http.get(
-            CONSTANTS.getHelloWorldURL,
+            '',
             {
                 headers: HEADERS
             }

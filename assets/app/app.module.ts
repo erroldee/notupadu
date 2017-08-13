@@ -12,6 +12,8 @@ import {LoadIfLoggedIn} from './shared/helpers/load-if-logged-in.helper';
 import 'hammerjs';
 import {MaterialDesignModule} from "./material/material-design.module";
 import {AllowLogout} from "./shared/helpers/allow-logout.helper";
+import {SplashScreenModule} from "./components/splash-screen/splash-screen.module";
+import {ElectronConnection} from "./shared/helpers/electron-connection.helper";
 
 @NgModule({
     declarations: [
@@ -23,7 +25,8 @@ import {AllowLogout} from "./shared/helpers/allow-logout.helper";
         ReactiveFormsModule,
         ROUTES_CONFIG,
         CoreModule,
-        MaterialDesignModule
+        MaterialDesignModule,
+        SplashScreenModule
     ],
     providers: [
         {
@@ -32,7 +35,8 @@ import {AllowLogout} from "./shared/helpers/allow-logout.helper";
         },
         DataStore,
         LoadIfLoggedIn,
-        AllowLogout
+        AllowLogout,
+        ElectronConnection
     ],
     bootstrap: [
         AppComponent

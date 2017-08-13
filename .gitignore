@@ -1,2 +1,14 @@
 /node_modules
 /.idea
+/app.js
+/app.js.map
+/electron/constants/constants.js
+/electron/constants/constants.js.map
+/electron/modules/splash-screen.module.js.map
+/electron/modules/main-window.module.js
+/electron/modules/main-window.module.js.map
+/electron/modules/splash-screen.module.js
+/electron/objects/window.object.js.map
+/electron/objects/menu.object.js
+/electron/objects/menu.object.js.map
+/electron/objects/window.object.js
