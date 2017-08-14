@@ -1,1 +1,33 @@
-HELLO WORLD!
+<div class="main-app-container">
+    <md-toolbar>
+        <span class="app-title">NOTUPADU</span>
+    </md-toolbar>
+    <div class="header-container">
+        <div class="tabs-container">
+            <a href="javascript:void(0);"
+                *ngFor="let menuTab of menuTabs; let idx = index;"
+                [ngClass]="{'tab': true, 'active': (activeTab === idx)}"
+                (click)="activateTab(idx)"
+            >
+                <div class="tab-icon">
+                    <md-icon>{{ menuTab.icon }}</md-icon>
+                </div>
+                <div class="tab-title">
+                    {{ menuTab.title }}
+                </div>
+            </a>
+        </div>
+        <div class="timer-container">
+            <a href="javascript:void(0);" class="timer-control"
+                (click)="toggleTimer()"
+            >
+                <div class="timer-icon">
+                    <md-icon>{{ timerStarted ? "stop" : "play_arrow" }}</md-icon>
+                </div>
+            </a>
+            <div class="timer-display">
+                <span class="timer-counter">{{ hourDisplay }}:{{ minuteDisplay }}:{{ secondDisplay }}</span>
+            </div>
+        </div>
+    </div>
+</div>

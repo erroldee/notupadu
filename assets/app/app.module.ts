@@ -14,6 +14,7 @@ import {MaterialDesignModule} from "./material/material-design.module";
 import {AllowLogout} from "./shared/helpers/allow-logout.helper";
 import {SplashScreenModule} from "./components/splash-screen/splash-screen.module";
 import {ElectronConnection} from "./shared/helpers/electron-connection.helper";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
     declarations: [
@@ -26,7 +27,8 @@ import {ElectronConnection} from "./shared/helpers/electron-connection.helper";
         ROUTES_CONFIG,
         CoreModule,
         MaterialDesignModule,
-        SplashScreenModule
+        SplashScreenModule,
+        BrowserAnimationsModule
     ],
     providers: [
         {

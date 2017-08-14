@@ -1,0 +1,88 @@
+.main-app-container {
+    max-width: 1024px;
+    min-width: 538px;
+    margin: 0 auto;
+}
+
+.app-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+
+.tabs-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 5px;
+    align-self: flex-start;
+}
+
+.tab {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    padding-bottom: 2px;
+    width: 100px;
+    text-decoration: none;
+}
+
+.tab-title {
+    font-size: 9px;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.tab.active {
+    border-bottom: 3px solid rgba(0, 0, 0, 0.87);
+}
+
+.tab md-icon {
+    color: whitesmoke;
+}
+
+.tab.active md-icon {
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.mat-icon {
+    font-size: 50px !important;
+    height: 50px !important;
+    width: 50px !important;
+}
+
+.timer-container {
+    align-self: flex-end;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-right: 20px;
+}
+
+.timer-control {
+    margin-right: 15px;
+}
+
+.timer-control md-icon {
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.timer-display {
+    margin-bottom: 4px;
+}
+
+.timer-counter {
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.87);
+}

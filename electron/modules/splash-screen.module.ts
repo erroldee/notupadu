@@ -14,8 +14,8 @@ export class SplashScreenModule {
 
     appEvents() {
         this.window = new WindowObject({
-            width: 628,
-            height: 308,
+            width: 668,
+            height: 348,
             center: true,
             resizable: false,
             movable: false,
@@ -23,7 +23,6 @@ export class SplashScreenModule {
             fullscreenable: false,
             title: "Notupadu",
             frame: false,
-            transparent: true,
             backgroundColor: "#00FFFFFF"
         });
         this.loadSplashScreen();

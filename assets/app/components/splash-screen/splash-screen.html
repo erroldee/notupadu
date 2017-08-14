@@ -1,10 +1,19 @@
-<div class="border">
-    <div class="placeholder">&nbsp;</div>
-    <div class="splash-container">
-        <div class="splash-title">NOTUPADU</div>
-        <div class="splash-version">v 1.0</div>
-    </div>
-    <div class="update-container">
-        <div [ngClass]="{'update-content': true, 'error': errorUpdate}">{{ updateStatus }}</div>
-    </div>
-</div>
+<md-card class="splash-card">
+    <md-card-content class="splash-container">
+        <div class="title-container">
+            <span class="app-title">NOTUPADU</span><span class="app-version">v1.0</span>
+        </div>
+        <div class="by-container">BY</div>
+        <div class="logo-container">
+            <div class="logo-header">MANILA</div>
+            <div>
+                <img src="/images/de-logo.png" />
+            </div>
+        </div>
+    </md-card-content>
+    <md-card-footer class="update-container">
+        <div class="update-content">
+            <span [ngClass]="{'update-text': true, 'error': errorUpdate}">{{ updateStatus }}</span>
+        </div>
+    </md-card-footer>
+</md-card>

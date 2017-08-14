@@ -9,7 +9,8 @@
             "outDir": "dist",
             "assets": [
                 "images",
-                "favicon.ico"
+                "favicon.ico",
+                "fonts"
             ],
             "index": "index.html",
             "main": "boot.ts",
@@ -21,7 +22,8 @@
             "styles": [
                 "../node_modules/normalize.css/normalize.css",
                 "theme.scss",
-                "global.css"
+                "global.css",
+                "material.css"
             ],
             "scripts": [],
             "environmentSource": "environments/environment.ts",

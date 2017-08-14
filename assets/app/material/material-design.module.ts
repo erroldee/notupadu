@@ -1,20 +1,23 @@
 import {NgModule} from "@angular/core";
-import {MdButtonModule, MdCardModule, MdSliderModule, MdSlideToggleModule, MdToolbarModule} from "@angular/material";
+import {
+    MdButtonModule, MdCardModule, MdIconModule, MdSliderModule, MdSlideToggleModule, MdTabsModule,
+    MdToolbarModule
+} from "@angular/material";
 
 @NgModule({
     imports: [
         MdToolbarModule,
         MdCardModule,
         MdButtonModule,
-        MdSlideToggleModule,
-        MdSliderModule
+        MdTabsModule,
+        MdIconModule
     ],
     exports: [
         MdToolbarModule,
         MdCardModule,
         MdButtonModule,
-        MdSlideToggleModule,
-        MdSliderModule
+        MdTabsModule,
+        MdIconModule
     ]
 })
 
