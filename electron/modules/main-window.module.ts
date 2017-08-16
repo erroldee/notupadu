@@ -23,7 +23,8 @@ export class MainWindowModule {
             width: 560,
             height: 640,
             minWidth: 560,
-            minHeight: 640
+            minHeight: 640,
+            transparent: true
         });
 
         log.info("PRODUCTION = " + CONSTANTS.production);
