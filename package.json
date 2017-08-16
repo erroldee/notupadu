@@ -94,7 +94,6 @@
         "repo": "angular-electron"
       }
     ],
-    "win": {}
     "nsis": {
       "oneClick": false,
       "perMachine": false,
