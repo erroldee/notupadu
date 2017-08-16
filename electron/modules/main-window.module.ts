@@ -3,10 +3,10 @@ import {WindowObject} from "../objects/window.object";
 import {MenuObject} from "../objects/menu.object";
 import MenuItemConstructorOptions = Electron.MenuItemConstructorOptions;
 import {CONSTANTS} from "../constants/constants";
-import {OnDestroy, OnInit} from "@angular/core";
 const url = require('url');
 const path = require('path');
 const electronShortcut = require("electron-localshortcut");
+const log = require("electron-log");
 
 export class MainWindowModule {
     private window: WindowObject;
@@ -21,15 +21,17 @@ export class MainWindowModule {
     appEvents() {
         this.window = new WindowObject({
             width: 560,
-            height: 660,
+            height: 640,
             minWidth: 560,
-            minHeight: 660
+            minHeight: 640
         });
+
+        log.info("PRODUCTION = " + CONSTANTS.production);
 
         this.loadMain();
         this.loadEvents();
-        this.buildMenu();
         this.buildShortcuts();
+        this.buildMenu();
     }
 
     loadMain() {
@@ -51,10 +53,8 @@ export class MainWindowModule {
     }
 
     buildMenu() {
-        this.menu = [];
-
         if (!CONSTANTS.production) {
-            const inspector: any = {
+            this.menu = [{
                 label: "Debug",
                 submenu: [
                     {
@@ -68,17 +68,17 @@ export class MainWindowModule {
                         }
                     }
                 ]
-            };
+            }];
 
-            this.menu.push(inspector);
+            if (process.platform === "darwin") {
+                this.menu.unshift({});
+            }
+
+            this.menuObj = new MenuObject(this.menu);
+            this.window.setMenu(this.menuObj.obj);
+        } else {
+            this.window.setMenu(null);
         }
-
-        if (process.platform === "darwin") {
-            this.menu.unshift({});
-        }
-
-        this.menuObj = new MenuObject(this.menu);
-        this.window.setMenu(this.menuObj.obj);
     }
 
     buildShortcuts() {

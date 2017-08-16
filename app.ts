@@ -65,7 +65,7 @@ class ElectronApp {
         autoUpdater.on('download-progress', (progressObj) => {
             let log_message = "Download speed: " + progressObj.bytesPerSecond;
             log_message = log_message + ' - Downloaded ' + progressObj.percent.toFixed(2) + '%';
-            log_message = log_message + ' (' + progressObj.transferred.toFixed(2) + "/" + progressObj.total.toFixed(2) + ')';
+            log_message = log_message + ' (' + progressObj.transferred + "/" + progressObj.total + ')';
             this.sendStatusToWindow({
                 error: false,
                 finish: false,
