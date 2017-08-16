@@ -20,8 +20,10 @@ export class MainWindowModule {
 
     appEvents() {
         this.window = new WindowObject({
+            width: 560,
+            height: 660,
             minWidth: 560,
-            minHeight: 680
+            minHeight: 660
         });
 
         this.loadMain();
@@ -38,7 +40,8 @@ export class MainWindowModule {
                 slashes: true
             });
         }
-        this.window.loadURL(this.HTMLcontent);
+
+        this.window.loadURL(this.HTMLcontent + "#/main");
     }
 
     loadEvents() {
@@ -48,22 +51,9 @@ export class MainWindowModule {
     }
 
     buildMenu() {
-        this.menu = [
-            {
-                label: "File",
-                submenu: [
-                    {
-                        label: "Quit",
-                        accelerator: process.platform === "darwin" ? "Command + Q" : "Ctrl + Q",
-                        click() {
-                            CONSTANTS.windowList[CONSTANTS.windowMapping['main']].closeWindow();
-                        }
-                    }
-                ]
-            }
-        ];
+        this.menu = [];
 
-        if (CONSTANTS.production) {
+        if (!CONSTANTS.production) {
             const inspector: any = {
                 label: "Debug",
                 submenu: [

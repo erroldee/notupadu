@@ -7,13 +7,7 @@ import {CanLeave} from "../../shared/helpers/can-leave.helper";
 const mainAppRoutes: Route[] = [
     {
         path: "",
-        component: MainAppComponent,
-        canActivate: [
-            IsLoggedIn
-        ],
-        canDeactivate: [
-            CanLeave
-        ]
+        component: MainAppComponent
     }
 ];
 

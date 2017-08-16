@@ -3,7 +3,6 @@ import {NgModule} from '@angular/core';
 import {HttpModule} from '@angular/http';
 
 import {AppComponent} from './app.component';
-import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ROUTES_CONFIG} from './app.router';
 import {CoreModule} from './core/core.module';
@@ -34,10 +33,6 @@ import {ShortcutEvents} from "./shared/helpers/shortcut-events.helper";
         BrowserAnimationsModule
     ],
     providers: [
-        {
-            provide: LocationStrategy,
-            useClass: HashLocationStrategy
-        },
         DataStore,
         LoadIfLoggedIn,
         AllowLogout,

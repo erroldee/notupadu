@@ -38,7 +38,8 @@ export class SplashScreenModule {
                 slashes: true
             });
         }
-        this.window.loadURL(this.HTMLcontent);
+
+        this.window.loadURL(this.HTMLcontent + "#/splash");
     }
 
     loadEvents() {
