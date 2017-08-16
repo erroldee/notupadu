@@ -111,7 +111,6 @@ class ElectronApp {
         });
 
         ipcMain.on("application:start", () => {
-            console.log("start app");
             CONSTANTS.windowMapping["main"] = CONSTANTS.windowList.length;
             CONSTANTS.windowList.push(new MainWindowModule());
             CONSTANTS.windowList[CONSTANTS.windowMapping["splash"]].closeWindow();

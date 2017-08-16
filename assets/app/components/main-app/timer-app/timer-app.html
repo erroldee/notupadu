@@ -1,0 +1,12 @@
+<div class="timer-container">
+    <a href="javascript:void(0);" class="timer-control"
+       (click)="toggleTimer()"
+    >
+        <div class="timer-icon">
+            <md-icon>{{ timerStarted ? "stop" : "play_arrow" }}</md-icon>
+        </div>
+    </a>
+    <div class="timer-display">
+        <span class="timer-counter">{{ timeDisplay }}</span>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+.timer-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-right: 20px;
+}
+
+.timer-control {
+    margin-right: 15px;
+}
+
+.timer-control md-icon {
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.timer-display {
+    margin-bottom: 4px;
+}
+
+.timer-counter {
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.mat-icon {
+    font-size: 50px !important;
+    height: 50px !important;
+    width: 50px !important;
+}

@@ -3,8 +3,10 @@ import {WindowObject} from "../objects/window.object";
 import {MenuObject} from "../objects/menu.object";
 import MenuItemConstructorOptions = Electron.MenuItemConstructorOptions;
 import {CONSTANTS} from "../constants/constants";
+import {OnDestroy, OnInit} from "@angular/core";
 const url = require('url');
 const path = require('path');
+const electronShortcut = require("electron-localshortcut");
 
 export class MainWindowModule {
     private window: WindowObject;
@@ -17,10 +19,15 @@ export class MainWindowModule {
     }
 
     appEvents() {
-        this.window = new WindowObject({});
+        this.window = new WindowObject({
+            minWidth: 560,
+            minHeight: 680
+        });
+
         this.loadMain();
         this.loadEvents();
         this.buildMenu();
+        this.buildShortcuts();
     }
 
     loadMain() {
@@ -84,11 +91,46 @@ export class MainWindowModule {
         this.window.setMenu(this.menuObj.obj);
     }
 
+    buildShortcuts() {
+        electronShortcut.register(
+            this.window.obj,
+            (process.platform === "darwin") ? "Command+N" : "Ctrl+N",
+            () => {
+                this.sendContent("shortcut:note", "start");
+            }
+        );
+
+        electronShortcut.register(
+            this.window.obj,
+            (process.platform === "darwin") ? "Command+S" : "Ctrl+S",
+            () => {
+                this.sendContent("shortcut:stats", "start");
+            }
+        );
+
+        electronShortcut.register(
+            this.window.obj,
+            (process.platform === "darwin") ? "Command+H" : "Ctrl+H",
+            () => {
+                this.sendContent("shortcut:about", "start");
+            }
+        );
+
+        electronShortcut.register(
+            this.window.obj,
+            (process.platform === "darwin") ? "Command+Space" : "Ctrl+Space",
+            () => {
+                this.sendContent("shortcut:timer", "start");
+            }
+        );
+    }
+
     sendContent(channel: string, data: any) {
         this.window.obj.webContents.send(channel, data);
     }
 
     closeWindow() {
+        electronShortcut.unregisterAll(this.window.obj);
         this.window.obj.close();
     }
 }

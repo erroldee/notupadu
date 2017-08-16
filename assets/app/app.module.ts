@@ -15,6 +15,9 @@ import {AllowLogout} from "./shared/helpers/allow-logout.helper";
 import {SplashScreenModule} from "./components/splash-screen/splash-screen.module";
 import {ElectronConnection} from "./shared/helpers/electron-connection.helper";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {DurationComputer} from "./shared/helpers/duration-computer.helper";
+import {StatStore} from "./shared/data/stat-store.helper";
+import {ShortcutEvents} from "./shared/helpers/shortcut-events.helper";
 
 @NgModule({
     declarations: [
@@ -38,7 +41,10 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
         DataStore,
         LoadIfLoggedIn,
         AllowLogout,
-        ElectronConnection
+        ElectronConnection,
+        DurationComputer,
+        StatStore,
+        ShortcutEvents
     ],
     bootstrap: [
         AppComponent

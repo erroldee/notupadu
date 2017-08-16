@@ -1,0 +1,14 @@
+<div class="tabs-container">
+    <a href="javascript:void(0);"
+       *ngFor="let menuTab of menuTabs; let idx = index;"
+       [ngClass]="{'tab': true, 'active': (activeTab === idx)}"
+       (click)="activateTab(idx)"
+    >
+        <div class="tab-icon">
+            <md-icon>{{ menuTab.icon }}</md-icon>
+        </div>
+        <div class="tab-title">
+            {{ menuTab.title }}
+        </div>
+    </a>
+</div>

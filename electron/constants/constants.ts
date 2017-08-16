@@ -1,5 +1,5 @@
 export const CONSTANTS = {
-    production: false,
+    production: true,
     app: null,
     windowList: [],
     windowMapping: {},

@@ -36,7 +36,7 @@ export class SplashScreenComponent implements OnInit {
         this._changeDetector.detectChanges();
 
         if (data.finish && !data.forUpdate) {
-            setTimeout(this.startApplication.bind(this), 2000);
+            setTimeout(this.startApplication.bind(this), 3000);
         }
     }
 

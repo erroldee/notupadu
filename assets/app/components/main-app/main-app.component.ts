@@ -1,4 +1,6 @@
-import {Component, ViewEncapsulation} from "@angular/core";
+import {Component, OnInit, ViewEncapsulation} from "@angular/core";
+import {ElectronConnection} from "../../shared/helpers/electron-connection.helper";
+import {ShortcutEvents} from "../../shared/helpers/shortcut-events.helper";
 
 @Component({
     selector: 'main-app-component',
@@ -7,61 +9,44 @@ import {Component, ViewEncapsulation} from "@angular/core";
     encapsulation: ViewEncapsulation.None
 })
 
-export class MainAppComponent {
-    activeTab: number = 0;
-    menuTabs: MenuTab[] = [
-        {
-            icon: "note_add",
-            title: "NEW"
-        },
-        {
-            icon: "show_chart",
-            title: "STATS"
-        },
-        {
-            icon: "help_outline",
-            title: "ABOUT"
+export class MainAppComponent implements OnInit {
+    activeTab: string = "NOTES";
+    notes: string = "";
+
+    constructor(
+        private _electronConnection: ElectronConnection,
+        private _shortcutEvents: ShortcutEvents
+    ) {}
+
+    ngOnInit(): void {
+        if (this._electronConnection.hasConn) {
+            this._electronConnection.listen("shortcut:note", () => {
+                this._shortcutEvents.showNote();
+            });
+
+            this._electronConnection.listen("shortcut:stats", () => {
+                this._shortcutEvents.showStats();
+            });
+
+            this._electronConnection.listen("shortcut:about", () => {
+                this._shortcutEvents.showAbout();
+            });
+
+            this._electronConnection.listen("shortcut:timer", () => {
+                this._shortcutEvents.toggleTimer();
+            });
         }
-    ];
-    timerStarted: boolean = false;
-    timerObj: any;
-    hourDisplay: string = "00";
-    minuteDisplay: string = "00";
-    secondDisplay: string = "00";
-    timeKeeper: number[] = [];
-    timeCounter: number = 0;
-
-    constructor() {}
-
-    activateTab(idx) {
-        this.activeTab = idx;
     }
 
-    toggleTimer() {
-        if (!this.timerStarted) {
-            this.timerObj = setInterval(this.updateTimer.bind(this), 1000);
-        } else {
-            clearInterval(this.timerObj);
-            this.timeKeeper.push(this.timeCounter);
-            this.updateTimer(true);
-        }
-
-        this.timerStarted = !this.timerStarted;
+    onActivateTab(activeTab: string) {
+        this.activeTab = activeTab;
     }
 
-    updateTimer(reset) {
-        if (reset) {
-            this.timeCounter = 0;
-        } else {
-            this.timeCounter++;
-        }
+    onTimerCleared(stat: boolean) {
+        this.notes = "";
+    }
 
-        const hour = Math.floor(this.timeCounter / 3600),
-            minute = Math.floor((this.timeCounter - (hour * 3600)) / 60),
-            second = this.timeCounter % 60;
-
-        this.hourDisplay = (hour > 9) ? "" + hour : "0" + hour;
-        this.minuteDisplay = (minute > 9) ? "" + minute : "0" + minute;
-        this.secondDisplay = (second > 9) ? "" + second : "0" + second;
+    onCopy(event: any) {
+        event.preventDefault();
     }
 }

@@ -1,0 +1,17 @@
+<md-table [dataSource]="dataSource">
+    <ng-container cdkColumnDef="statId">
+        <md-header-cell *cdkHeaderCellDef>ID</md-header-cell>
+        <md-cell *cdkCellDef="let stat">{{ stat.id }}</md-cell>
+    </ng-container>
+    <ng-container cdkColumnDef="statDateTime">
+        <md-header-cell *cdkHeaderCellDef>Date and Time</md-header-cell>
+        <md-cell *cdkCellDef="let stat">{{ stat.datetime }}</md-cell>
+    </ng-container>
+    <ng-container cdkColumnDef="statDuration">
+        <md-header-cell *cdkHeaderCellDef>Duration</md-header-cell>
+        <md-cell *cdkCellDef="let stat">{{ stat.stat }}</md-cell>
+    </ng-container>
+
+    <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
+    <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>
+</md-table>
