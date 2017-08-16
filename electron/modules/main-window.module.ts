@@ -23,8 +23,7 @@ export class MainWindowModule {
             width: 560,
             height: 640,
             minWidth: 560,
-            minHeight: 640,
-            transparent: true
+            minHeight: 640
         });
 
         log.info("PRODUCTION = " + CONSTANTS.production);
@@ -87,6 +86,7 @@ export class MainWindowModule {
             this.window.obj,
             (process.platform === "darwin") ? "Command+N" : "Ctrl+N",
             () => {
+                console.log("note called");
                 this.sendContent("shortcut:note", "start");
             }
         );

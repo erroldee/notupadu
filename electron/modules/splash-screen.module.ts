@@ -23,8 +23,7 @@ export class SplashScreenModule {
             fullscreenable: false,
             title: "Notupadu",
             frame: false,
-            backgroundColor: "#00FFFFFF",
-            transparent: true
+            backgroundColor: "#00FFFFFF"
         });
         this.loadSplashScreen();
         this.loadEvents();

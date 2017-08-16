@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation} from "@angular/core";
+import {ChangeDetectorRef, Component, OnInit, ViewEncapsulation} from "@angular/core";
 import {ElectronConnection} from "../../shared/helpers/electron-connection.helper";
 import {ShortcutEvents} from "../../shared/helpers/shortcut-events.helper";
 
@@ -15,7 +15,8 @@ export class MainAppComponent implements OnInit {
 
     constructor(
         private _electronConnection: ElectronConnection,
-        private _shortcutEvents: ShortcutEvents
+        private _shortcutEvents: ShortcutEvents,
+        private _changeDetectorRef: ChangeDetectorRef
     ) {}
 
     ngOnInit(): void {
@@ -40,13 +41,18 @@ export class MainAppComponent implements OnInit {
 
     onActivateTab(activeTab: string) {
         this.activeTab = activeTab;
+        this._changeDetectorRef.detectChanges();
     }
 
     onTimerCleared(stat: boolean) {
-        this.notes = "";
+        if (stat) {
+            this.notes = "";
+        }
+
+        this._changeDetectorRef.detectChanges();
     }
 
-    onCopy(event: any) {
+    onCutCopy(event: any) {
         event.preventDefault();
     }
 }

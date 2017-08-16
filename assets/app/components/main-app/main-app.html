@@ -18,7 +18,8 @@
                     mdTextareaAutosize
                     [mdAutosizeMinRows]="3"
                     [(ngModel)]="notes"
-                    (copy)="onCopy($event)"
+                    (copy)="onCutCopy($event)"
+                    (cut)="onCutCopy($event)"
 
                     class="notes"
                     placeholder="Notes"></textarea>

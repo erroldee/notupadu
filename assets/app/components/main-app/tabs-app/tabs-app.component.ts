@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnDestroy, OnInit, Output} from "@angular/core";
+import {ChangeDetectorRef, Component, EventEmitter, OnDestroy, OnInit, Output} from "@angular/core";
 import {MenuTab} from "../../../shared/interfaces/menu-tab.interface";
 import {ShortcutEvents} from "../../../shared/helpers/shortcut-events.helper";
 
@@ -32,7 +32,8 @@ export class TabsAppComponent implements OnInit, OnDestroy {
     private aboutSub: any;
 
     constructor(
-        private _shortcutEvents: ShortcutEvents
+        private _shortcutEvents: ShortcutEvents,
+        private _changeDetectorRef: ChangeDetectorRef
     ) {}
 
     ngOnInit(): void {
@@ -64,5 +65,6 @@ export class TabsAppComponent implements OnInit, OnDestroy {
     activateTab(idx) {
         this.activeTab = idx;
         this.tabActivated.emit(this.menuTabs[idx].title);
+        this._changeDetectorRef.detectChanges();
     }
 }

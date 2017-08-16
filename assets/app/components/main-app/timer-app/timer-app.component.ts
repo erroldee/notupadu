@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnDestroy, OnInit, Output} from "@angular/core";
+import {ChangeDetectorRef, Component, EventEmitter, OnDestroy, OnInit, Output} from "@angular/core";
 import {DataStore} from "../../../shared/data/data-store.helper";
 import {StatDetails} from "../../../shared/models/stat-details.model";
 import {DurationComputer} from "../../../shared/helpers/duration-computer.helper";
@@ -25,7 +25,8 @@ export class TimerAppComponent implements OnInit, OnDestroy {
     constructor(
         private _durationComputer: DurationComputer,
         private _statStore: StatStore,
-        private _shortcutEvents: ShortcutEvents
+        private _shortcutEvents: ShortcutEvents,
+        private _changeDetectorRef: ChangeDetectorRef
     ) {}
 
     ngOnInit() {
@@ -54,6 +55,7 @@ export class TimerAppComponent implements OnInit, OnDestroy {
         }
 
         this.timerStarted = !this.timerStarted;
+        this._changeDetectorRef.detectChanges();
     }
 
     addStatToTable(stat) {
@@ -70,6 +72,8 @@ export class TimerAppComponent implements OnInit, OnDestroy {
             datetime: month + " " + date + ", " + year + " " + hour + ":" + minute + " " + AMPM,
             stat: this._durationComputer.compute(stat.duration),
         });
+        this._changeDetectorRef.detectChanges();
+        this.timerCleared.emit(false);
     }
 
     updateTimer(reset) {
@@ -80,5 +84,6 @@ export class TimerAppComponent implements OnInit, OnDestroy {
         }
 
         this.timeDisplay = this._durationComputer.compute(this.timeCounter);
+        this._changeDetectorRef.detectChanges();
     }
 }
