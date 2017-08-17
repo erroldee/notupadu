@@ -15,7 +15,7 @@ export class MainAppComponent implements OnInit {
     activeTab: string = "NOTES";
     notes: string = "";
     isReadOnly: boolean = true;
-    notesPlaceholder: string = "Initiate timer to start taking notes";
+    notesPlaceholder: string = "Press play start taking notes";
 
     constructor(
         private _electronConnection: ElectronConnection,
