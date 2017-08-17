@@ -56,7 +56,7 @@ export class MainAppComponent implements OnInit {
             this.notesPlaceholder = "Notes";
         } else {
             this.isReadOnly = true;
-            this.notesPlaceholder = "Initiate timer to start taking notes";
+            this.notesPlaceholder = "Press play start taking notes";
         }
 
         this._changeDetectorRef.detectChanges();
