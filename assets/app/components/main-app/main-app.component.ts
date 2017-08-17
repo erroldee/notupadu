@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit, ViewEncapsulation} from "@angular/core";
+import {ChangeDetectorRef, Component, OnInit, ViewChild, ViewEncapsulation} from "@angular/core";
 import {ElectronConnection} from "../../shared/helpers/electron-connection.helper";
 import {ShortcutEvents} from "../../shared/helpers/shortcut-events.helper";
 
@@ -10,8 +10,12 @@ import {ShortcutEvents} from "../../shared/helpers/shortcut-events.helper";
 })
 
 export class MainAppComponent implements OnInit {
+    @ViewChild("noteTextarea") noteTextarea;
+
     activeTab: string = "NOTES";
     notes: string = "";
+    isReadOnly: boolean = true;
+    notesPlaceholder: string = "Initiate timer to start taking notes";
 
     constructor(
         private _electronConnection: ElectronConnection,
@@ -47,6 +51,12 @@ export class MainAppComponent implements OnInit {
     onTimerCleared(stat: boolean) {
         if (stat) {
             this.notes = "";
+            this.isReadOnly = false;
+            this.noteTextarea.nativeElement.focus();
+            this.notesPlaceholder = "Notes";
+        } else {
+            this.isReadOnly = true;
+            this.notesPlaceholder = "Initiate timer to start taking notes";
         }
 
         this._changeDetectorRef.detectChanges();

@@ -14,15 +14,17 @@
         <md-card class="body-border">
             <md-input-container class="notes-container" *ngIf="activeTab === 'NOTES'">
                 <textarea
+                    #noteTextarea
                     mdInput
                     mdTextareaAutosize
                     [mdAutosizeMinRows]="3"
                     [(ngModel)]="notes"
                     (copy)="onCutCopy($event)"
                     (cut)="onCutCopy($event)"
+                    [readonly]="isReadOnly"
 
                     class="notes"
-                    placeholder="Notes"></textarea>
+                    [placeholder]="notesPlaceholder"></textarea>
             </md-input-container>
             <stats-app *ngIf="activeTab === 'STATS'"></stats-app>
             <help-app *ngIf="activeTab === 'ABOUT'"></help-app>
